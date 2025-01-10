@@ -1,84 +1,79 @@
-
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
 
 const initialState = {
-   isAuthenticated : false,
-   isLoading : true,
-   user : null
+  isAuthenticated: false,
+  isLoading: true,
+  user: null,
 };
 
-
 export const registerUser = createAsyncThunk(
-    "/auth/register",
-  
-    async (formData) => {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
-  
-      return response.data;
-    }
-  );
+  "/auth/register",
 
+  async (formData) => {
+    const response = await axios.post(
+      "https://myownstore.onrender.com/api/auth/register",
+      formData,
+      {
+        withCredentials: true,
+      }
+    );
 
-  export const loginUser = createAsyncThunk(
-    "/auth/login",
-  
-    async (formData) => {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
-  
-      return response.data;
-    }
-  );
+    return response.data;
+  }
+);
 
-  export const logoutUser = createAsyncThunk(
-    "/auth/logout",
-  
-    async () => {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/logout",
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-  
-      return response.data;
-    }
-  );
+export const loginUser = createAsyncThunk(
+  "/auth/login",
 
-  
+  async (formData) => {
+    const response = await axios.post(
+      "https://myownstore.onrender.com/api/auth/login",
+      formData,
+      {
+        withCredentials: true,
+      }
+    );
+
+    return response.data;
+  }
+);
+
+export const logoutUser = createAsyncThunk(
+  "/auth/logout",
+
+  async () => {
+    const response = await axios.post(
+      "https://myownstore.onrender.com/api/auth/logout",
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+
+    return response.data;
+  }
+);
+
 export const checkAuth = createAsyncThunk(
-    "/auth/checkauth",
-  
-    async () => {
-      const response = await axios.get(
-        "http://localhost:5000/api/auth/check-auth",
-        {
-          withCredentials: true,
-          headers: {
-            "Cache-Control":
-              "no-store, no-cache, must-revalidate, proxy-revalidate",
-          },
-        }
-      );
-  
-      return response.data;
-    }
-  );
+  "/auth/checkauth",
 
+  async () => {
+    const response = await axios.get(
+      "https://myownstore.onrender.com/api/auth/check-auth",
+      {
+        withCredentials: true,
+        headers: {
+          "Cache-Control":
+            "no-store, no-cache, must-revalidate, proxy-revalidate",
+        },
+      }
+    );
+
+    return response.data;
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
