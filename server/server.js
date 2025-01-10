@@ -35,7 +35,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
     cors({
-      origin: "https://localhost:5173.com",
+      origin: "https://myownstore-frontend.onrender.com",
       methods: ["GET", "POST", "DELETE", "PUT"],
       allowedHeaders: [
         "Content-Type",
